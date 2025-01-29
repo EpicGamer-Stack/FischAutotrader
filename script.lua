@@ -1,19 +1,4 @@
 
-local namelist = {"Dog_t0rich","avasacas"}
-_G.DBMZBMZXBVOEJ8RY328481023732UBZZSCMBVXAWGDtXAB = false
-
-for _,a in namelist do 
-    if(game.Players.LocalPlayer.Name == a)then
-        _G.DBMZBMZXBVOEJ8RY328481023732UBZZSCMBVXAWGDXAB = true
-    end
-end
-
-
-if not _G.DBMZBMZXBVOEJ8RY328481023732UBZZSCMBVXAWGDXAB then
-    game.Players.LocalPlayer:Kick("🤡")
-end
-
-
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 
@@ -21,7 +6,7 @@ local Window = Rayfield:CreateWindow({
     Name = "Fisch AutoTrader V.2",
     Icon = 0, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
     LoadingTitle = "Fisch AutoTrader V.2",
-    LoadingSubtitle = "by avasacas",
+    LoadingSubtitle = "by 🥚",
     Theme = "Default", -- Check https://docs.sirius.menu/rayfield/configuration/themes
  
     DisableRayfieldPrompts = false,
