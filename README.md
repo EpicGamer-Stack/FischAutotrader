@@ -1,0 +1,2 @@
+# FischAutotraderWhitelist
+Email Go BRRRRRRRRRR
