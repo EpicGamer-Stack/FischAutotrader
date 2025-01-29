@@ -7,7 +7,7 @@ local Window = Rayfield:CreateWindow({
     Icon = 0, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
     LoadingTitle = "Fisch AutoTrader V.2",
     LoadingSubtitle = "by 🥚",
-    Theme = "Default", -- Check https://docs.sirius.menu/rayfield/configuration/themes
+    Theme = "Ocean", -- Check https://docs.sirius.menu/rayfield/configuration/themes
  
     DisableRayfieldPrompts = false,
     DisableBuildWarnings = false, -- Prevents Rayfield from warning when the script has a version mismatch with the interface
@@ -18,6 +18,146 @@ local InfoTab = Window:CreateTab("Info", "badge-info") -- Title, Imag
 local AutoTraderTab = Window:CreateTab("AutoTrader", "arrow-right-left") -- Title, Image
 
 _G.PLR = nil
+
+function TradeCommon()
+    local fish = {}
+
+    local plr = game.Players.LocalPlayer
+    local backpack = game.Players.LocalPlayer.Backpack
+
+    local inventory = game.Players.LocalPlayer.PlayerGui.hud.safezone.backpack.inventory.scroll
+    for _, v in pairs(inventory:GetChildren()) do
+        local favourited = v:FindFirstChild("favourited")
+        if favourited and not favourited.Visible then
+            if v:FindFirstChild("raritystar") then
+                if v:FindFirstChild("raritystar").ImageColor3 == Color3.fromRGB(255, 255, 255) then
+            
+                    if v:FindFirstChild("item") then
+                        local GUILINK = v:FindFirstChild("item").Value
+                        table.insert(fish,v)
+                        
+                        for _,item in backpack:GetChildren() do
+                            
+                            if item:FindFirstChild("link") and item:FindFirstChild("link").Value == GUILINK and item:FindFirstChild("offer") then
+                                repeat task.wait() until plr.Character:FindFirstChildOfClass("Tool") == nil
+                                item.Parent = plr.Character
+                                item.offer:FireServer(game.Players:FindFirstChild(_G.PLR))
+                                item.Parent = plr.Backpack
+                            end
+                        end
+                       
+                    end
+                end
+            end
+        end
+    end
+end
+
+
+function TradeUncommon()
+    local fish = {}
+
+    local plr = game.Players.LocalPlayer
+    local backpack = game.Players.LocalPlayer.Backpack
+
+    local inventory = game.Players.LocalPlayer.PlayerGui.hud.safezone.backpack.inventory.scroll
+    for _, v in pairs(inventory:GetChildren()) do
+        local favourited = v:FindFirstChild("favourited")
+        if favourited and not favourited.Visible then
+            if v:FindFirstChild("raritystar") then
+                if v:FindFirstChild("raritystar").ImageColor3 == Color3.fromRGB(161, 255, 169) then
+            
+                    if v:FindFirstChild("item") then
+                        local GUILINK = v:FindFirstChild("item").Value
+                        table.insert(fish,v)
+                        
+                        for _,item in backpack:GetChildren() do
+                            
+                            if item:FindFirstChild("link") and item:FindFirstChild("link").Value == GUILINK then
+                                repeat task.wait() until plr.Character:FindFirstChildOfClass("Tool") == nil
+                                item.Parent = plr.Character
+                                item.offer:FireServer(game.Players:FindFirstChild(_G.PLR))
+                                item.Parent = plr.Backpack
+                            end
+                        end
+                       
+                    end
+                end
+            end
+        end
+    end
+end
+
+
+
+function TradeUnusual()
+    local fish = {}
+
+    local plr = game.Players.LocalPlayer
+    local backpack = game.Players.LocalPlayer.Backpack
+
+    local inventory = game.Players.LocalPlayer.PlayerGui.hud.safezone.backpack.inventory.scroll
+    for _, v in pairs(inventory:GetChildren()) do
+        local favourited = v:FindFirstChild("favourited")
+        if favourited and not favourited.Visible then
+            if v:FindFirstChild("raritystar") then
+                if v:FindFirstChild("raritystar").ImageColor3 == Color3.fromRGB(192, 135, 198) then
+            
+                    if v:FindFirstChild("item") then
+                        local GUILINK = v:FindFirstChild("item").Value
+                        table.insert(fish,v)
+                        
+                        for _,item in backpack:GetChildren() do
+                            
+                            if item:FindFirstChild("link") and item:FindFirstChild("link").Value == GUILINK then
+                                repeat task.wait() until plr.Character:FindFirstChildOfClass("Tool") == nil
+                                item.Parent = plr.Character
+                                item.offer:FireServer(game.Players:FindFirstChild(_G.PLR))
+                                item.Parent = plr.Backpack
+                            end
+                        end
+                       
+                    end
+                end
+            end
+        end
+    end
+end
+
+function TradeRare()
+    local fish = {}
+
+    local plr = game.Players.LocalPlayer
+    local backpack = game.Players.LocalPlayer.Backpack
+
+    local inventory = game.Players.LocalPlayer.PlayerGui.hud.safezone.backpack.inventory.scroll
+    for _, v in pairs(inventory:GetChildren()) do
+        local favourited = v:FindFirstChild("favourited")
+        if favourited and not favourited.Visible then
+            if v:FindFirstChild("raritystar") then
+                if v:FindFirstChild("raritystar").ImageColor3 == Color3.fromRGB(119, 108, 181) then
+            
+                    if v:FindFirstChild("item") then
+                        local GUILINK = v:FindFirstChild("item").Value
+                        table.insert(fish,v)
+                        
+                        for _,item in backpack:GetChildren() do
+                            
+                            if item:FindFirstChild("link") and item:FindFirstChild("link").Value == GUILINK then
+                                repeat task.wait() until plr.Character:FindFirstChildOfClass("Tool") == nil
+                                item.Parent = plr.Character
+                                item.offer:FireServer(game.Players:FindFirstChild(_G.PLR))
+                                item.Parent = plr.Backpack
+                            end
+                        end
+                       
+                    end
+                end
+            end
+        end
+    end
+end
+
 
 function TradeLegendary()
     local fish = {}
@@ -164,6 +304,51 @@ local DeleteGui = InfoTab:CreateButton({
         end
     end,
  })
+ local COMMMON = AutoTraderTab:CreateButton({
+    Name = "Trade Commons",
+    Callback = function()
+      
+        TradeCommon()
+        
+    end
+ })
+
+
+
+ local UNCOMMON = AutoTraderTab:CreateButton({
+    Name = "Trade Uncommons",
+    Callback = function()
+      
+        TradeUncommon()
+        
+    end
+ })
+
+
+
+
+ local UNUSUAL = AutoTraderTab:CreateButton({
+    Name = "Trade Unusuals",
+    Callback = function()
+      
+        TradeUnusual()
+        
+    end
+ })
+
+
+
+
+ local RARE = AutoTraderTab:CreateButton({
+    Name = "Trade Rares",
+    Callback = function()
+      
+        TradeRare()
+        
+    end
+ })
+
+
 
  local LEGENDARY = AutoTraderTab:CreateButton({
     Name = "Trade Legendaries",
@@ -184,19 +369,6 @@ local DeleteGui = InfoTab:CreateButton({
         
     end
  })
-
-
-
- local TradingOnOff = AutoTraderTab:CreateSection("Enable/Disable")
-
- local AutoTradeOn = AutoTraderTab:CreateButton({
-    Name = "Fire AutoTrader",
-    Callback = function()
-        DoTrade()
-    end
- })
-
-
 
 
  local new_list = {}
