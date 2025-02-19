@@ -227,6 +227,40 @@ function TradeMythical()
     end
 end
 
+function TradeLimited()
+    local fish = {}
+    local fishtools = {}
+    local plr = game.Players.LocalPlayer
+    local backpack = game.Players.LocalPlayer.Backpack
+
+    local inventory = game.Players.LocalPlayer.PlayerGui.hud.safezone.backpack.inventory.scroll
+    for _, v in pairs(inventory:GetChildren()) do
+        local favourited = v:FindFirstChild("favourited")
+        if favourited and not favourited.Visible then
+            if v:FindFirstChild("raritystar") then
+                if v:FindFirstChild("raritystar").ImageColor3 == Color3.fromRGB(54, 73, 159) then
+            
+                    if v:FindFirstChild("item") then
+                        local GUILINK = v:FindFirstChild("item").Value
+                        table.insert(fish,v)
+                        
+                        for _,item in backpack:GetChildren() do
+                            
+                            if item:FindFirstChild("link") and item:FindFirstChild("link").Value == GUILINK then
+                                repeat task.wait() until plr.Character:FindFirstChildOfClass("Tool") == nil
+                                item.Parent = plr.Character
+                                item.offer:FireServer(game.Players:FindFirstChild(_G.PLR))
+                                item.Parent = plr.Backpack
+                            end
+                        end
+                       
+                    end
+                end
+            end
+        end
+    end
+end
+
 
 local InfoDeleteGui = InfoTab:CreateSection("Delete Gui")
 local DeleteGui = InfoTab:CreateButton({
@@ -369,6 +403,16 @@ local DeleteGui = InfoTab:CreateButton({
         
     end
  })
+
+ local LIMITED = AutoTraderTab:CreateButton({
+    Name = "Trade LIMITED",
+    Callback = function()
+      
+        TradeLimited()
+        
+    end
+ })
+
 
 
  local new_list = {}
