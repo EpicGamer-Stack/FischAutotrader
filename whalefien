@@ -1,0 +1,76 @@
+
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+local Window = Rayfield:CreateWindow({
+    Name = "Fisch Whale Hunter",
+    Icon = 0, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
+    LoadingTitle = "Whale Hunter 🐟",
+    LoadingSubtitle = "by 🥚",
+    Theme = "Ocean", -- Check https://docs.sirius.menu/rayfield/configuration/themes
+ 
+    DisableRayfieldPrompts = false,
+    DisableBuildWarnings = false, -- Prevents Rayfield from warning when the script has a version mismatch with the interface
+
+})
+
+_G.Whale_Hunting = false
+_G.Summon_Whale = false
+
+
+
+local InfoTab = Window:CreateTab("Misc", "badge-info") -- Title, Imag
+local Hunter = Window:CreateTab("Whale Hunter", "fish-symbol") -- Title, Image
+
+local Toggle_Hunting = Hunter:CreateSection("Toggle Hunting")
+local Hunt_Whales = Hunter:CreateToggle({
+    Name = "Hunt Whales",
+    CurrentValue = false,
+    Flag = "Hunting_Whales", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+    Callback = function(Value)
+        _G.Whale_Hunting = Value
+
+        while _G.Whale_Hunting do
+            task.wait()
+        
+            local whale_pool = workspace.zones.fishing:FindFirstChild("Whales Pool")
+            if whale_pool then
+                local whale_pos = CFrame.new(whale_pool.CFrame.Position + Vector3.new(0,74,0))
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = whale_pos
+                
+            end
+        end
+    end,
+ })
+
+
+local Summon_Whale = Hunter:CreateToggle({
+    Name = "Summon Whale",
+    CurrentValue = false,
+    Flag = "Summon_Whale", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+    Callback = function(Value)
+        _G.Summon_Whale = Value
+        if Value then
+            Rayfield:Notify({
+                Title = "Notice",
+                Content = "Put Totems Into Hotbar",
+                Duration = 6.5,
+                Image = "fish-symbol",
+             })
+        end
+    end,
+ })
+
+
+
+
+
+
+
+
+
+local InfoDeleteGui = InfoTab:CreateSection("Delete Gui")
+local DeleteGui = InfoTab:CreateButton({
+    Name = "Destroy UI",
+    Callback = function()
+        Rayfield:Destroy()
+    end,
+ })
