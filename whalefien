@@ -42,25 +42,6 @@ local Hunt_Whales = Hunter:CreateToggle({
  })
 
 
-local Summon_Whale = Hunter:CreateToggle({
-    Name = "Summon Whale",
-    CurrentValue = false,
-    Flag = "Summon_Whale", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
-    Callback = function(Value)
-        _G.Summon_Whale = Value
-        if Value then
-            Rayfield:Notify({
-                Title = "Notice",
-                Content = "Put Totems Into Hotbar",
-                Duration = 6.5,
-                Image = "fish-symbol",
-             })
-        end
-    end,
- })
-
-
-
 
 
 
