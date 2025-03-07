@@ -180,7 +180,7 @@ local Hunt_Whales = Hunter:CreateToggle({
 
 
 
-
+KeybindMenu:CreateSection("Binds")
 
 
 
