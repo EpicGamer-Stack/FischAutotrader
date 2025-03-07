@@ -5,6 +5,6 @@ local Starter = game.StarterGui
 local SetCore = Starter:SetCore("SendNotification",{
 		Title = "Notice",
 		Text = "You are using an old loadstring. Please Migrate!",
-		Icon = "",
-		Duration = 100000
+		Icon = nil,
+		Duration = 3
 	})
