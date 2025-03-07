@@ -14,7 +14,7 @@ local Window = Rayfield:CreateWindow({
 _G.Summon_Whale = false
 _G.Whale_Hunting = false
 _G.HuntWhaleDebounce = false
-_G.ROD = ""
+
 
 local InfoTab = Window:CreateTab("Misc", "badge-info") -- Title, Imag
 local Hunter = Window:CreateTab("Whale Hunter", "fish-symbol") -- Title, Image
@@ -98,7 +98,7 @@ local Hunt_Whales = Hunter:CreateToggle({
                                                 Duration = 6.5,
                                     Image = "fish-symbol",
                                 })
-                       
+                       		break
                         end
 
                   
@@ -115,7 +115,7 @@ local Hunt_Whales = Hunter:CreateToggle({
                                     Duration = 6.5,
                                     Image = "fish-symbol",
                                 })
-                            
+                            	break
             
                             
                         end
