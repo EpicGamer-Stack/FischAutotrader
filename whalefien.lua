@@ -10,15 +10,20 @@ local Window = Rayfield:CreateWindow({
     DisableRayfieldPrompts = false,
     DisableBuildWarnings = false, -- Prevents Rayfield from warning when the script has a version mismatch with the interface
 
+    ConfigurationSaving = {
+        Enabled = true,
+        FolderName = nil, -- Create a custom folder for your hub/game
+        FileName = "WhaleHunter"
+     },
 })
 _G.Summon_Whale = false
 _G.Whale_Hunting = false
 _G.HuntWhaleDebounce = false
 
 
-local InfoTab = Window:CreateTab("Misc", "badge-info") -- Title, Imag
+
 local Hunter = Window:CreateTab("Whale Hunter", "fish-symbol") -- Title, Image
-local KeybindMenu = Window:CreateTab("Keybinds", "keyboard")
+local InfoTab = Window:CreateTab("Misc", "badge-info") -- Title, Imag
 
 
 local Toggle_Hunting = Hunter:CreateSection("Toggle Hunting")
@@ -181,27 +186,18 @@ local Hunt_Whales = Hunter:CreateToggle({
  })
 
 
+ local InfoTheme = InfoTab:CreateSection("Gui Theme")
 
-KeybindMenu:CreateSection("Binds")
-
-
-
-
- local HunterWhaleBind = KeybindMenu:CreateKeybind({
-    Name = "Toggle Whale Hunting",
-    CurrentKeybind = "Z",
-    HoldToInteract = false,
-    Flag = "WhaleHuntingBind",
-    Callback = function()
-    
-        
-        -- Toggle the whale hunting state properly
-        _G.Whale_Hunting = not _G.Whale_Hunting
-        Hunt_Whales:Set(_G.Whale_Hunting) -- Ensure the toggle reflects the state
-
-
+ local Dropdown = InfoTab:CreateDropdown({
+    Name = "Set Theme",
+    Options = {"Default","AmberGlow","Amethyst","Bloom","DarkBlue","Green","Light","Ocean","Serenity"},
+    CurrentOption = {"Ocean"},
+    MultipleOptions = false,
+    Flag = "GuiTheme", 
+    Callback = function(Options)
+        Window.ModifyTheme(Options[1])
     end,
-})
+ })
 
 
 
@@ -215,8 +211,7 @@ KeybindMenu:CreateSection("Binds")
      end,
   })
 
-
-
+Rayfield:LoadConfiguration()
 
 
 
