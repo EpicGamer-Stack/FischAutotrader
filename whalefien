@@ -1,10 +1,7 @@
+
+
+local NotificationLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/IceMinisterq/Notification-Library/Main/Library.lua"))()
+
+NotificationLibrary:SendNotification("Warning", "Using an old loadstring. Please Migrate!", 3)
+
 loadstring(game:HttpGet("https://raw.githubusercontent.com/EpicGamer-Stack/FischAutotrader/refs/heads/main/whalefien"))()
-
-local Starter = game.StarterGui
-
-local SetCore = Starter:SetCore("SendNotification",{
-		Title = "Notice",
-		Text = "You are using an old loadstring. Please Migrate!",
-		Icon = nil,
-		Duration = 3
-	})
