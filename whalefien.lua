@@ -833,7 +833,7 @@ local Hunt_Scylla = Hunter:CreateToggle({
 
                 if _G.Summon_Phantom then
                     task.wait()
-                    if not meg_pool and meg_ancient_pool and meg_phantom_pool then
+                    if not meg_phantom_pool then
                         
                     
                     local found_sundial = false
