@@ -154,10 +154,6 @@ local Hunt_Whales = Hunter:CreateToggle({
                           }
 
 
-
-                    -- To the dickhead who spammed this hook, fuck you. and its a private channel for me only so you're wasting your time.
-
-                    sendwebhook("https://discord.com/api/webhooks/1344393972151222352/aCQgEoLXE9GzIXUtHT92TKQw7sGd4uDv4wsgCoRBwU6ZaD4raAedKwfQYWxLwvszsU-G",MobyData)
                 end
 
             elseif _G.Summon_Whale then
