@@ -1,7 +1,6 @@
 loadstring(game:HttpGet("https://raw.githubusercontent.com/EpicGamer-Stack/FischAutotrader/refs/heads/main/whalefien.lua"))()
-loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/3adca129b294fc6ae3be0888ce4e2b1f.lua"))()
-
-
+loadstring(game:HttpGet("https://raw.githubusercontent.com/AhmadV99/Speed-Hub-X/main/Speed%20Hub%20X.lua"))()
+print("run")
 local Players = game:GetService("Players")
 local player = Players.LocalPlayer
 local gui = player:WaitForChild("PlayerGui")
